@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Radera – Official website</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    /* Sticky Header */
+    .top-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        padding: 12px 20px;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .header-left {
+        flex: 0 0 auto;
+    }
+
+    .header-logo {
+        height: 50px;
+    }
+
+    .header-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex: 1;
+        flex-wrap: wrap;
+    }
+
+    .header-center a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: 0.3s ease;
+        border: 1px solid transparent;
+    }
+
+    .header-center a:hover {
+        border-color: white;
+    }
+
+    .header-booking {
+        background: white;
+        color: black !important;
+        font-weight: 700;
+    }
+
+    .header-booking:hover {
+        background: #ccc;
+    }
+
+    /* HEADER SOCIAL ICONS FIX */
+    .header-right {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .header-right img {
+        background: transparent !important;
+        display: block;
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    /* Background */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("background.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px) brightness(0.4);
+        z-index: -1;
+    }
+
+    /* Main content overlay */
+    .overlay {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 120px 20px 60px;
+        text-align: center;
+        position: relative;
+    }
+
+    .main-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    /* Bigger tagline */
+    .tagline {
+        font-size: 48px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 40px;
+    }
+
+    .bio-text {
+        width: 80%;
+        max-width: 1000px;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.6;
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    /* Social media icons bottom section */
+    .socials {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 60px;
+        align-items: center;
+    }
+
+    .socials img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        display: block;
+        transition: 0.3s ease;
+    }
+
+    .socials a:hover img {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+        .top-header {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .header-logo {
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tagline { font-size: 32px; }
+        .bio-text { font-size: 14px; }
+    }
+@media (max-width: 768px) {
+    .header-right {
+        display: none;
+    }
+}
+
+   
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="top-header">
+    <div class="header-left">
+        <a href="index.html">
+            <img src="logovit2.png" alt="Logo" class="header-logo">
+        </a>
+    </div>
+
+    <div class="header-center">
+        <a href="index.html">Home</a>
+        <a href="music.html">Music</a>
+        <a class="header-booking" href="booking.html">Booking</a>
+        
+    </div>
+
+    <div class="header-right">
+        <a href="https://www.instagram.com/raderaofficial/" target="_blank">
+            <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@raderaofficial" target="_blank">
+            <img src="tiktok.png" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/@Radera" target="_blank">
+            <img src="youtube2.png" alt="YouTube">
+        </a>
+        <a href="https://www.facebook.com/RaderaOfficial" target="_blank">
+            <img src="facebook.png" alt="Facebook">
+        </a>
+    </div>
+</header>
+
+<div class="background"></div>
+
+<div class="overlay">
+
+    <img src="storbilde.png" alt="DJ-bild" class="main-img">
+
+    <div class="tagline">HARDEST ARTIST IN SWEDEN</div>
+
+    <div class="bio-text">
+        <p>Are you ready for Sweden's most intense Hardstyle experience?</p>
+        <p>Radera is one of the biggest names in the Swedish Hardstyle scene, and he's rapidly gaining international recognition.</p>
+        <p>From Rawstyle to Uptempo, with 100% energy, Radera is taking over the world of Hardstyle!</p>
+    </div>
+
+    <div style="max-width: 600px; margin: 0 auto 20px;">
+        <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/7iwQdWc0OmE43tEJOBHQKe?utm_source=generator"
+            width="100%" height="352" frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- Socials bottom -->
+    <div class="socials">
+        <a href="https://www.instagram.com/raderaofficial/" target="_blank">
+            <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@raderaofficial" target="_blank">
+            <img src="tiktok.png" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/@Radera" target="_blank">
+            <img src="youtube.png" alt="YouTube">
+        </a>
+        <a href="https://www.facebook.com/RaderaOfficial" target="_blank">
+            <img src="facebook.png" alt="Facebook">
+        </a>
+        <a class="booking-btn" href="mailto:Booking@Radera.dj">
+            <img src="booking.png" alt="Booking">
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

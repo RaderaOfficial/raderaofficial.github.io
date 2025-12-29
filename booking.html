@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking – Radera</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    /* Sticky Header */
+    .top-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        padding: 12px 20px;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .header-left {
+        flex: 0 0 auto;
+    }
+
+    .header-logo {
+        height: 50px;
+    }
+
+    .header-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex: 1;
+        flex-wrap: wrap;
+    }
+
+    .header-center a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: 0.3s ease;
+        border: 1px solid transparent;
+    }
+
+    .header-center a:hover {
+        border-color: white;
+    }
+
+    .header-booking {
+        background: white;
+        color: black !important;
+        font-weight: 700;
+    }
+
+    .header-booking:hover {
+        background: #ccc;
+    }
+
+   .header-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-right img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+
+
+    /* Background */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("background.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px) brightness(0.4);
+        z-index: -1;
+    }
+
+    /* Main content */
+    .content {
+        max-width: 1400px;
+        margin: 120px auto 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 300px;
+        display: block;
+        margin: 0 auto 40px auto;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin-bottom: 50px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    /* Two columns */
+    .columns {
+        display: flex;
+        gap: 120px;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 60px;
+    }
+
+    .left {
+        flex: 2;
+        text-align: left;
+    }
+
+    .right {
+        flex: 1;
+    }
+
+    .left p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        opacity: 0.95;
+    }
+
+    .right h3 {
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    .right p {
+        line-height: 1.5;
+        opacity: 0.9;
+        margin-bottom: 15px;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 14px 26px;
+        background: white;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: 0.3s ease;
+    }
+
+    .contact-btn:hover {
+        background: #cfcfcf;
+    }
+
+    /* Bottom images */
+    .bottom-images {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .bottom-images img {
+        width: 300px;
+        max-width: 100%;
+        border-radius: 8px;
+        transition: 0.3s ease;
+    }
+
+    .bottom-images img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Socials */
+    .socials {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+
+    .socials a img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        transition: 0.3s ease;
+    }
+
+    .socials a img:hover {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+        .columns {
+            flex-direction: column;
+            gap: 40px;
+        }
+        .logo {
+            width: 220px;
+        }
+        .top-header {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+@media (max-width: 768px) {
+    .header-right {
+        display: none;
+    }
+}
+
+   
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- Header -->
+<header class="top-header">
+    <div class="header-left">
+        <a href="index.html">
+            <img src="logovit2.png" alt="Logo" class="header-logo">
+        </a>
+    </div>
+
+    <div class="header-center">
+        <a href="index.html">Home</a>
+        <a href="music.html">Music</a>
+        <a class="header-booking" href="booking.html">Booking</a>
+        
+    </div>
+
+    <div class="header-right">
+        <a href="https://www.instagram.com/raderaofficial/" target="_blank">
+            <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@raderaofficial" target="_blank">
+            <img src="tiktok.png" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/@Radera" target="_blank">
+            <img src="youtube2.png" alt="YouTube">
+        </a>
+        <a href="https://www.facebook.com/RaderaOfficial" target="_blank">
+            <img src="facebook.png" alt="Facebook">
+        </a>
+    </div>
+</header>
+
+<div class="content">
+    <img src="logovit2.png" class="logo" alt="Logo">
+    <h1>BOOKING</h1>
+
+    <div class="columns">
+        <div class="left">
+            <p>Radera delivers a mix from Rawstyle to Uptempo, with hit releases like “ON AND ON AND ON”, “TOGETHER”, and “BLACK WIDOW”.</p>
+            <p>He has performed in The Netherlands, Germany, Sweden, Norway, Denmark, and Poland, at events such as Sana Duri, DNA OUTDOOR, Summerburst, and Owl Festival. Radera also plays full Hardstyle nights at clubs, covering Classic Hardstyle, Hardstyle, Rawstyle, Hardcore, and Uptempo.</p>
+            <p>With his extensive discography, he adapts easily to any lineup and set length. Whether you need Rawstyle, Uptempo, or a mix, Radera delivers a set that fits.</p>
+            <p>Radera is not just a DJ. He is an artist with a live experience like no other.</p>
+        </div>
+        <div class="right">
+            <h3>Contact details</h3>
+            <p>Radera Management<br>Linköping<br>Sweden</p>
+            <p>E: booking@radera.dj</p>
+            <a href="mailto:booking@radera.dj" class="contact-btn">Send Email</a>
+        </div>
+    </div>
+
+    <!-- Bottom images -->
+    <div class="bottom-images">
+        <img src="Booking1.jpg" alt="Booking1">
+        <img src="Booking2.jpg" alt="Booking2">
+        <img src="Booking3.jpg" alt="Booking3">
+    </div>
+
+    <!-- Socials -->
+    <div class="socials">
+        <a href="https://www.instagram.com/raderaofficial/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@raderaofficial" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
+        <a href="https://www.youtube.com/@Radera" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+        <a href="https://www.facebook.com/RaderaOfficial" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+        <a href="mailto:Booking@Radera.dj"><img src="booking.png" alt="Booking"></a>
+    </div>
+
+</div>
+
+</body>
+</html>
