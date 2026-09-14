@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Radera – Official website</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
 <style>
     * {
@@ -145,6 +146,88 @@
         margin-bottom: 40px;
     }
 
+    /* Tour Section Styling */
+    .tour-section {
+        width: 80%;
+        max-width: 1000px;
+        margin-bottom: 50px;
+        text-align: left;
+    }
+
+    .tour-title {
+        font-size: 32px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 10px;
+    }
+
+    .tour-card {
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        backdrop-filter: blur(4px);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tour-card:hover {
+        transform: translateY(-2px);
+        border-color: #fff;
+    }
+
+    .tour-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .tour-date {
+        font-size: 14px;
+        font-weight: 700;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .tour-name {
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    .tour-location {
+        font-size: 15px;
+        color: #ddd;
+    }
+
+    .ticket-btn {
+        display: inline-block;
+        background: #fff;
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        transition: background 0.2s ease;
+    }
+
+    .ticket-btn:hover {
+        background: #ccc;
+    }
+
     /* Social media icons bottom section */
     .socials {
         display: flex;
@@ -177,17 +260,27 @@
         }
     }
 
+    @media (max-width: 768px) {
+        .header-right {
+            display: none;
+        }
+        .tour-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .ticket-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
     @media (max-width: 600px) {
         .tagline { font-size: 32px; }
         .bio-text { font-size: 14px; }
+        .tour-section { width: 100%; }
+        .tour-title { font-size: 24px; }
     }
-@media (max-width: 768px) {
-    .header-right {
-        display: none;
-    }
-}
-
-   
 </style>
 </head>
 
@@ -205,7 +298,6 @@
         <a href="index.html">Home</a>
         <a href="music.html">Music</a>
         <a class="header-booking" href="booking.html">Booking</a>
-        
     </div>
 
     <div class="header-right">
@@ -230,20 +322,60 @@
 
     <img src="storbilde.png" alt="DJ-bild" class="main-img">
 
-    <div class="tagline">
-       
-  <p>SCANDINAVIA'S MOST ENERGETIC</p>
-  <p>RAWSTYLE & UPTEMPO ARTIST</p>
-
-    </div>
+    <div class="tagline">HARDEST ARTIST IN SWEDEN</div>
 
     <div class="bio-text">
         <p>Are you ready for Sweden's most intense Hardstyle experience?</p>
-        <p>Radera is one of the biggest names in the Swedish Hardstyle, Rawstyle & Hardcore scene, and he's rapidly gaining international recognition.</p>
+        <p>Radera is one of the biggest names in the Swedish Hardstyle scene, and he's rapidly gaining international recognition.</p>
         <p>From Rawstyle to Uptempo, with 100% energy, Radera is taking over the world of Hardstyle!</p>
     </div>
 
-    <div style="max-width: 600px; margin: 0 auto 20px;">
+    <!-- RADERA TOUR DATES SECTION -->
+    <div class="tour-section">
+        <h2 class="tour-title">Radera Tour Dates</h2>
+
+        <!-- Event 1 -->
+        <div class="tour-card">
+            <div class="tour-info">
+                <span class="tour-date">2026-09-26</span>
+                <span class="tour-name">Quantum: The Outlander</span>
+                <span class="tour-location">Kammivabriku Tehasehoone, Estonia</span>
+            </div>
+            <a href="https://www.ticketer.ee/quantum-the-outlander-d-block-s-te-fan-hard-driver" target="_blank" class="ticket-btn">Tickets</a>
+        </div>
+
+        <div class="tour-card">
+            <div class="tour-info">
+                <span class="tour-date">2026-10-31</span>
+                <span class="tour-name">Poco locos restaurang w/ MIAZ</span>
+                <span class="tour-location">Ljungby, Sweden</span>
+            </div>
+            <a href="#" target="_blank" class="ticket-btn">Tickets</a>
+        </div>
+
+       
+        <div class="tour-card">
+            <div class="tour-info">
+                <span class="tour-date">2026-12-04</span>
+                <span class="tour-name">TBA w/ MIAZ</span>
+                <span class="tour-location">TBA, Sweden</span>
+            </div>
+            <a href="#" target="_blank" class="ticket-btn">Tickets</a>
+        </div>
+
+       
+        <div class="tour-card">
+            <div class="tour-info">
+                <span class="tour-date">2027-02-6</span>
+                <span class="tour-name">ZAANDAM - The Fortress of Faith </span>
+                <span class="tour-location">Gävle, Sweden</span>
+            </div>
+            <a href="https://secure.tickster.com/sv/cekbbrwuphb01c7/products?fbclid=IwY2xjawUUdEtwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMDV0RWs1UDVSRlVBclZ1Vk1zcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe4XlArDPL5Py8OvcpV1De_-dhRXNyrsnXR-n3R9MbQQfCgwqg3YbJyPOKPHo_aem_apNUVlyfHz5CZVVF_zv9yQ" target="_blank" class="ticket-btn">Tickets</a>
+        </div>
+       
+    </div>
+
+    <div style="max-width: 600px; margin: 0 auto 20px; width: 100%;">
         <iframe style="border-radius:12px"
             src="https://open.spotify.com/embed/playlist/7iwQdWc0OmE43tEJOBHQKe?utm_source=generator"
             width="100%" height="352" frameBorder="0"
