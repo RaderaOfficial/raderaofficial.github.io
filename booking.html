@@ -1,320 +1,459 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Booking – Radera</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking – Radera</title>
+  <link rel="icon" type="image/png" href="favicon.png">
 
-<style>
+  <!-- Google Font (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* --------------------------------------------------
+       1. Reset & Global Variables
+       -------------------------------------------------- */
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #0a0a0c;
+      --text-color: #ffffff;
+      --text-muted: #a1a1aa;
+      --accent-color: #ffffff;
+      --accent-hover: #e2e2e2;
+      --glass-bg: rgba(18, 18, 20, 0.75);
+      --glass-card-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #000;
-        color: #fff;
-        overflow-x: hidden;
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Sticky Header */
+    /* --------------------------------------------------
+       2. Dynamic Background
+       -------------------------------------------------- */
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom, rgba(10, 10, 12, 0.65), rgba(10, 10, 12, 0.95)), url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    /* --------------------------------------------------
+       3. Sticky Header
+       -------------------------------------------------- */
     .top-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.75);
-        backdrop-filter: blur(6px);
-        padding: 12px 20px;
-        z-index: 1000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 16px 32px;
+      z-index: 1000;
+      border-bottom: 1px solid var(--glass-border);
     }
 
-    .header-left {
-        flex: 0 0 auto;
+    .header-left .header-logo {
+      height: 40px;
+      width: auto;
+      display: block;
+      transition: transform 0.2s ease;
     }
 
-    .header-logo {
-        height: 50px;
+    .header-left .header-logo:hover {
+      transform: scale(1.03);
     }
 
     .header-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        flex: 1;
-        flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .header-center a {
-        color: white;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 8px 14px;
-        border-radius: 6px;
-        transition: 0.3s ease;
-        border: 1px solid transparent;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
     }
 
     .header-center a:hover {
-        border-color: white;
+      background: rgba(255, 255, 255, 0.1);
     }
 
-    .header-booking {
-        background: white;
-        color: black !important;
-        font-weight: 700;
+    .header-center .header-booking {
+      background: var(--text-color);
+      color: #000 !important;
+      font-weight: 700;
     }
 
-    .header-booking:hover {
-        background: #ccc;
+    .header-center .header-booking:hover {
+      background: #e2e2e2;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
-   .header-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.header-right img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-    display: block;
-}
-
-
-    /* Background */
-    .background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("background.jpg");
-        background-size: cover;
-        background-position: center;
-        filter: blur(6px) brightness(0.4);
-        z-index: -1;
+    .header-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
     }
 
-    /* Main content */
-    .content {
-        max-width: 1400px;
-        margin: 120px auto 0 auto;
-        padding: 40px 20px;
-        text-align: center;
+    .header-right a img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+      filter: invert(1);
     }
 
-    .logo {
-        width: 300px;
-        display: block;
-        margin: 0 auto 40px auto;
+    .header-right a:hover img {
+      opacity: 1;
+      transform: translateY(-2px);
     }
 
-    h1 {
-        font-size: 48px;
-        margin-bottom: 50px;
-        font-weight: 700;
-        letter-spacing: 2px;
+    /* --------------------------------------------------
+       4. Main Content Container
+       -------------------------------------------------- */
+    main.main-container {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 130px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Two columns */
+    .booking-logo {
+      width: 240px;
+      height: auto;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    .page-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      text-align: center;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Two Columns Section */
     .columns {
-        display: flex;
-        gap: 120px;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      width: 100%;
+      margin-bottom: 60px;
+      align-items: start;
     }
 
-    .left {
-        flex: 2;
-        text-align: left;
+    .left-card, .right-card {
+      background: var(--glass-card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 36px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .right {
-        flex: 1;
+    .left-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    .left p {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        opacity: 0.95;
+    .left-card p:last-child {
+      margin-bottom: 0;
     }
 
-    .right h3 {
-        margin-bottom: 15px;
-        font-size: 22px;
+    .right-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text-color);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 12px;
     }
 
-    .right p {
-        line-height: 1.5;
-        opacity: 0.9;
-        margin-bottom: 15px;
+    .right-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .contact-email-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .contact-email-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
     }
 
     .contact-btn {
-        display: inline-block;
-        padding: 14px 26px;
-        background: white;
-        color: black;
-        font-size: 18px;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-        margin-top: 20px;
-        transition: 0.3s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--accent-color);
+      color: #000;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 30px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 12px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     }
 
     .contact-btn:hover {
-        background: #cfcfcf;
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
     }
 
-    /* Bottom images */
+    /* --------------------------------------------------
+       5. Bottom Image Gallery
+       -------------------------------------------------- */
+    .gallery-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
     .bottom-images {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 60px;
     }
 
     .bottom-images img {
-        width: 300px;
-        max-width: 100%;
-        border-radius: 8px;
-        transition: 0.3s ease;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
     }
 
     .bottom-images img:hover {
-        transform: scale(1.05);
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
     }
 
-    /* Socials */
-    .socials {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 60px;
+    /* --------------------------------------------------
+       6. Footer / Social Links
+       -------------------------------------------------- */
+    footer.socials {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding: 20px;
     }
 
-    .socials a img {
-        width: 32px;
-        height: 32px;
-        object-fit: contain;
-        transition: 0.3s ease;
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      transition: all 0.25s ease;
     }
 
-    .socials a img:hover {
-        transform: scale(1.1);
+    .socials img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      filter: invert(1);
     }
 
+    .socials a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* --------------------------------------------------
+       7. Responsiveness
+       -------------------------------------------------- */
     @media (max-width: 900px) {
-        .columns {
-            flex-direction: column;
-            gap: 40px;
-        }
-        .logo {
-            width: 220px;
-        }
-        .top-header {
-            flex-direction: column;
-            gap: 10px;
-        }
+      .columns {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .left-card, .right-card {
+        padding: 24px;
+      }
     }
-@media (max-width: 768px) {
-    .header-right {
-        display: none;
-    }
-}
 
-   
-</style>
+    @media (max-width: 768px) {
+      .top-header {
+        padding: 12px 20px;
+      }
+
+      .header-right {
+        display: none;
+      }
+
+      main.main-container {
+        padding-top: 100px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="background"></div>
+  <!-- Dynamic Background -->
+  <div class="background-overlay"></div>
 
-<!-- Header -->
-<header class="top-header">
+  <!-- Header -->
+  <header class="top-header">
     <div class="header-left">
-        <a href="index.html">
-            <img src="logovit2.png" alt="Logo" class="header-logo">
-        </a>
+      <a href="index.html" aria-label="Hem">
+        <img src="logovit2.png" alt="Radera Logotyp" class="header-logo">
+      </a>
     </div>
 
-    <div class="header-center">
-        <a href="index.html">Home</a>
-        <a href="music.html">Music</a>
-        <a class="header-booking" href="booking.html">Booking</a>
-        
-    </div>
+    <nav class="header-center">
+      <a href="index.html">Home</a>
+      <a href="music.html">Music</a>
+      <a class="header-booking" href="booking.html">Booking</a>
+    </nav>
 
     <div class="header-right">
-        <a href="https://www.instagram.com/raderaofficial/" target="_blank">
-            <img src="instagram.png" alt="Instagram">
-        </a>
-        <a href="https://www.tiktok.com/@raderaofficial" target="_blank">
-            <img src="tiktok.png" alt="TikTok">
-        </a>
-        <a href="https://www.youtube.com/@Radera" target="_blank">
-            <img src="youtube2.png" alt="YouTube">
-        </a>
-        <a href="https://www.facebook.com/RaderaOfficial" target="_blank">
-            <img src="facebook.png" alt="Facebook">
-        </a>
+      <a href="https://www.instagram.com/raderaofficial/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="instagram.png" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@raderaofficial" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="tiktok.png" alt="TikTok">
+      </a>
+      <a href="https://www.youtube.com/@Radera" target="_blank" rel="noopener" aria-label="YouTube">
+        <img src="youtube2.png" alt="YouTube">
+      </a>
+      <a href="https://www.facebook.com/RaderaOfficial" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="facebook.png" alt="Facebook">
+      </a>
     </div>
-</header>
+  </header>
 
-<div class="content">
-    <img src="logovit2.png" class="logo" alt="Logo">
-    <h1>BOOKING</h1>
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <img src="logovit2.png" class="booking-logo" alt="Radera Logo">
+    <h1 class="page-title">Booking Info</h1>
 
     <div class="columns">
-        <div class="left">
-            <p>Radera delivers high-energy sets ranging from heavy Rawstyle to relentless Uptempo, backed by hit releases like “ON AND ON AND ON”, “PSYKOPAT (Radera Remix)”, and “MY SYSTEM”.</p>
+      <!-- Left Column: Biography & Show Info -->
+      <section class="left-card">
+        <p>Radera delivers high-energy sets ranging from heavy Rawstyle to relentless Uptempo, backed by hit releases like “ON AND ON AND ON”, “PSYKOPAT (Radera Remix)”, and “MY SYSTEM”.</p>
 
-<p>He has brought his signature sound to stages across Europe—including The Netherlands, Germany, Sweden, Norway, Denmark, Finland, Estonia, and Poland—performing at major events such as Sana Duri, One Vision Festival, DNA OUTDOOR, Summerburst, and Owl Festival. Beyond festivals, Radera frequently takes over full club nights, spanning Classic Hardstyle, Rawstyle, Hardcore, and Uptempo.</p>
+        <p>He has brought his signature sound to stages across Europe—including The Netherlands, Germany, Sweden, Norway, Denmark, Finland, Estonia, and Poland—performing at major events such as Sana Duri, One Vision Festival, DNA OUTDOOR, Summerburst, and Owl Festival. Beyond festivals, Radera frequently takes over full club nights, spanning Classic Hardstyle, Rawstyle, Hardcore, and Uptempo.</p>
 
-<p>With an extensive catalog, he adapts seamlessly to any time slot or stage. Radera offers 1-hour solo sets, an explosive 30-minute LIVE ACT, or full 4–5 hour solo club nights. His sets are also known for guest appearances and B2B moments with artists like MIAZ, Direktören, and Emelie.</p>
+        <p>With an extensive catalog, he adapts seamlessly to any time slot or stage. Radera offers 1-hour solo sets, an explosive 30-minute LIVE ACT, or full 4–5 hour solo club nights. His sets are also known for guest appearances and B2B moments with artists like MIAZ, Direktören, and Emelie.</p>
+      </section>
 
-        </div>
-        <div class="right">
-            <h3>Contact details</h3>
-            <p>Radera Management<br>Linköping<br>Sweden</p>
-            <p>E: booking@radera.dj</p>
-            <a href="mailto:booking@radera.dj" class="contact-btn">Send Email</a>
-        </div>
+      <!-- Right Column: Contact Details -->
+      <section class="right-card">
+        <h2>Contact Details</h2>
+        <p>
+          <strong>Radera Management</strong><br>
+          Linköping, Sweden
+        </p>
+        <p>
+          E-mail: <a href="mailto:booking@radera.dj" class="contact-email-link">booking@radera.dj</a>
+        </p>
+        <a href="mailto:booking@radera.dj" class="contact-btn">Send Email</a>
+      </section>
     </div>
 
-    <!-- Bottom images -->
-    <div class="bottom-images">
-        <img src="Booking1.jpg" alt="Booking1">
-        <img src="Booking2.jpg" alt="Booking2">
-        <img src="Booking3.jpg" alt="Booking3">
-    </div>
+    <!-- Bottom Image Gallery -->
+    <section style="width: 100%;">
+      <div class="bottom-images">
+        <img src="Booking1.jpg" alt="Radera Performance 1">
+        <img src="Booking2.jpg" alt="Radera Performance 2">
+        <img src="Booking3.jpg" alt="Radera Performance 3">
+      </div>
+    </section>
 
-    <!-- Socials -->
-    <div class="socials">
-        <a href="https://www.instagram.com/raderaofficial/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
-        <a href="https://www.tiktok.com/@raderaofficial" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
-        <a href="https://www.youtube.com/@Radera" target="_blank"><img src="youtube.png" alt="YouTube"></a>
-        <a href="https://www.facebook.com/RaderaOfficial" target="_blank"><img src="facebook.png" alt="Facebook"></a>
-        <a href="mailto:Booking@Radera.dj"><img src="booking.png" alt="Booking"></a>
-    </div>
+    <!-- Socials bottom -->
+    <footer class="socials">
+      <a href="https://www.instagram.com/raderaofficial/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="instagram.png" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@raderaofficial" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="tiktok.png" alt="TikTok">
+      </a>
+      <a href="https://www.youtube.com/@Radera" target="_blank" rel="noopener" aria-label="YouTube">
+        <img src="youtube.png" alt="YouTube">
+      </a>
+      <a href="https://www.facebook.com/RaderaOfficial" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="facebook.png" alt="Facebook">
+      </a>
+      <a href="mailto:booking@radera.dj" aria-label="E-post Bokning">
+        <img src="booking.png" alt="Booking Email">
+      </a>
+    </footer>
 
-</div>
+  </main>
 
 </body>
 </html>
