@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome Ikoner -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     /* --------------------------------------------------
        1. Reset & Global Variables
@@ -125,16 +128,18 @@
       align-items: center;
     }
 
-    .header-right a img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
+    .header-right a {
+      color: #ffffff;
+      font-size: 20px;
       opacity: 0.85;
       transition: all 0.2s ease;
-      filter: brightness(0) invert(1); /* Gör ikoner helt vita */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
 
-    .header-right a:hover img {
+    .header-right a:hover {
       opacity: 1;
       transform: translateY(-2px);
     }
@@ -147,14 +152,14 @@
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 80px 24px 60px; /* Sänkte toppadding för att bilden hamnar högre upp */
+      padding: 80px 24px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
 
-    /* Ändrad så att storbilde sträcker sig över hela skärmen utan ram */
+    /* Stora bilden sträcker sig över hela skärmen */
     .main-img {
       width: 100vw;
       max-width: 100vw;
@@ -330,14 +335,10 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--glass-border);
       border-radius: 50%;
+      color: #ffffff;
+      font-size: 20px;
+      text-decoration: none;
       transition: all 0.25s ease;
-    }
-
-    .socials img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      filter: brightness(0) invert(1); /* Gör ikoner helt vita */
     }
 
     .socials a:hover {
@@ -404,16 +405,16 @@
 
     <div class="header-right">
       <a href="https://www.instagram.com/raderaofficial/" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="instagram.png" alt="Instagram">
+        <i class="fa-brands fa-instagram"></i>
       </a>
       <a href="https://www.tiktok.com/@raderaofficial" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="tiktok.png" alt="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
       </a>
       <a href="https://www.youtube.com/@Radera" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="youtube2.png" alt="YouTube">
+        <i class="fa-brands fa-youtube"></i>
       </a>
       <a href="https://www.facebook.com/RaderaOfficial" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="facebook.png" alt="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
       </a>
     </div>
   </header>
@@ -487,19 +488,19 @@
     <!-- Socials bottom -->
     <footer class="socials">
       <a href="https://www.instagram.com/raderaofficial/" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="instagram.png" alt="Instagram">
+        <i class="fa-brands fa-instagram"></i>
       </a>
       <a href="https://www.tiktok.com/@raderaofficial" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="tiktok.png" alt="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
       </a>
       <a href="https://www.youtube.com/@Radera" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="youtube.png" alt="YouTube">
+        <i class="fa-brands fa-youtube"></i>
       </a>
       <a href="https://www.facebook.com/RaderaOfficial" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="facebook.png" alt="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
       </a>
       <a href="mailto:Booking@Radera.dj" aria-label="E-post Bokning">
-        <img src="booking.png" alt="Booking Email">
+        <i class="fa-regular fa-envelope"></i>
       </a>
     </footer>
 
