@@ -129,9 +129,9 @@
       width: 22px;
       height: 22px;
       object-fit: contain;
-      opacity: 0.8;
+      opacity: 0.85;
       transition: all 0.2s ease;
-      filter: invert(1);
+      filter: brightness(0) invert(1); /* Gör ikoner helt vita */
     }
 
     .header-right a:hover img {
@@ -147,21 +147,25 @@
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 130px 24px 60px;
+      padding: 80px 24px 60px; /* Sänkte toppadding för att bilden hamnar högre upp */
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
 
+    /* Ändrad så att storbilde sträcker sig över hela skärmen utan ram */
     .main-img {
-      width: 100%;
-      max-width: 800px;
+      width: 100vw;
+      max-width: 100vw;
       height: auto;
-      border-radius: 16px;
+      border-radius: 0;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
       margin-bottom: 36px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--glass-border);
+      box-shadow: none;
+      border: none;
+      display: block;
     }
 
     .tagline {
@@ -333,7 +337,7 @@
       width: 22px;
       height: 22px;
       object-fit: contain;
-      filter: invert(1);
+      filter: brightness(0) invert(1); /* Gör ikoner helt vita */
     }
 
     .socials a:hover {
@@ -355,7 +359,7 @@
       }
 
       main.main-container {
-        padding-top: 100px;
+        padding-top: 70px;
       }
 
       .tour-card {
