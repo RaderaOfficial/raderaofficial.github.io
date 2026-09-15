@@ -218,13 +218,37 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .spotify-embed {
       width: 100%;
       border-radius: 12px;
       border: none;
+    }
+
+    /* Buy Button (Grön knapp) */
+    .buy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #1DB954;
+      color: #000000;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+      margin-bottom: 30px;
+    }
+
+    .buy-button:hover {
+      background-color: #1ed760;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5);
     }
 
     /* --------------------------------------------------
@@ -336,7 +360,7 @@
       <a href="https://music.apple.com/us/artist/radera/1423333984" target="_blank" rel="noopener" class="platform-btn">
         <i class="fa-brands fa-apple"></i> Apple Music
       </a>
-      <a href=https://soundcloud.com/raderaofficial" target="_blank" rel="noopener" class="platform-btn">
+      <a href="https://soundcloud.com/raderaofficial" target="_blank" rel="noopener" class="platform-btn">
         <i class="fa-brands fa-soundcloud"></i> SoundCloud
       </a>
       <a href="https://music.youtube.com/channel/UCAct0H20jkdf_CV--4q1ozw" target="_blank" rel="noopener" class="platform-btn">
@@ -346,13 +370,14 @@
 
     <!-- Spotify Embed Player -->
     <section class="player-section">
-  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7iwQdWc0OmE43tEJOBHQKe?utm_source=generator&si=ab5c220ce1664ec6" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7iwQdWc0OmE43tEJOBHQKe?utm_source=generator&si=ab5c220ce1664ec6" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </section>
-   <a class="buy-button"
-       href="https://radera.gumroad.com/"
-       target="_blank">
-       Buy the extended edit
+
+    <!-- Buy Button -->
+    <a class="buy-button" href="https://radera.gumroad.com/" target="_blank" rel="noopener">
+      <i class="fa-solid fa-cart-shopping"></i> Buy the extended edit
     </a>
+
     <!-- Socials bottom -->
     <footer class="socials">
       <a href="https://www.instagram.com/raderaofficial/" target="_blank" rel="noopener" aria-label="Instagram">
