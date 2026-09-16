@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Radera – Official Website</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -31,7 +31,7 @@
       --accent-color: #ffffff;
       --accent-hover: #e2e2e2;
       --glass-bg: rgba(18, 18, 20, 0.75);
-      --glass-card-bg: rgba(255, 255, 255, 0.03);
+      --glass-card-bg: rgba(0, 0, 0, 0.45);
       --glass-border: rgba(255, 255, 255, 0.1);
       --font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
@@ -47,18 +47,29 @@
     }
 
     /* --------------------------------------------------
-       2. Dynamic Background
+       2. Fullscreen Video Background
        -------------------------------------------------- */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.65);
+    }
+
     .background-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(to bottom, rgba(10, 10, 12, 0.6), rgba(10, 10, 12, 0.95)), url("background.jpg");
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(to bottom, rgba(10, 10, 12, 0.4), rgba(10, 10, 12, 0.85));
       z-index: -1;
+      pointer-events: none;
     }
 
     /* --------------------------------------------------
@@ -75,7 +86,7 @@
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      padding: 16px 32px;
+      padding: calc(16px + env(safe-area-inset-top)) 32px 16px 32px;
       z-index: 1000;
       border-bottom: 1px solid var(--glass-border);
     }
@@ -152,25 +163,11 @@
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 80px 24px 60px;
+      padding: calc(140px + env(safe-area-inset-top)) 24px calc(60px + env(safe-area-inset-bottom));
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
-
-    /* Stora bilden sträcker sig över hela skärmen */
-    .main-img {
-      width: 100vw;
-      max-width: 100vw;
-      height: auto;
-      border-radius: 0;
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      margin-bottom: 36px;
-      box-shadow: none;
-      border: none;
-      display: block;
     }
 
     .tagline {
@@ -178,18 +175,25 @@
       font-weight: 900;
       letter-spacing: -1px;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
 
     .bio-text {
       max-width: 720px;
       font-size: 17px;
-      color: var(--text-muted);
+      color: #e4e4e7;
       line-height: 1.6;
       margin-bottom: 56px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 24px 28px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
     }
 
     .bio-text p {
@@ -242,16 +246,16 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: all 0.25s ease;
     }
 
     .tour-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .tour-info {
@@ -264,14 +268,14 @@
     .tour-date {
       font-size: 14px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: #fff;
       text-transform: uppercase;
       letter-spacing: 1px;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.1);
       padding: 8px 14px;
       border-radius: 8px;
       white-space: nowrap;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .tour-details {
@@ -332,19 +336,21 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.4);
       border: 1px solid var(--glass-border);
       border-radius: 50%;
       color: #ffffff;
       font-size: 20px;
       text-decoration: none;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       transition: all 0.25s ease;
     }
 
     .socials a:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     /* --------------------------------------------------
@@ -360,7 +366,7 @@
       }
 
       main.main-container {
-        padding-top: 70px;
+        padding-top: 100px;
       }
 
       .tour-card {
@@ -386,7 +392,13 @@
 
 <body>
 
-  <!-- Dynamic Background -->
+  <!-- Fullscreen Background Video -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="Radera.mp4" type="video/mp4">
+    Din webbläsare stöder inte videouppspelning.
+  </video>
+
+  <!-- Dynamic Gradient Overlay -->
   <div class="background-overlay"></div>
 
   <!-- Header -->
@@ -421,8 +433,6 @@
 
   <!-- Main Content -->
   <main class="main-container">
-
-    <img src="storbilde.png" alt="Radera DJ Performing" class="main-img">
 
     <h1 class="tagline">Hardest Artist In Sweden</h1>
 
